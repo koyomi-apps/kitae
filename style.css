@@ -472,7 +472,8 @@ h1 {
   padding-block: clamp(56px, 9vw, 112px);
 }
 .feat h2,
-.data h2 {
+.data h2,
+.shots h2 {
   margin: 0;
   font-size: clamp(2.6rem, 1.6rem + 4vw, 4.2rem);
   font-weight: 700;
@@ -679,5 +680,115 @@ h1 {
   }
   .sets li {
     padding: 4px 8px;
+  }
+}
+
+/* Screenshots */
+
+.shots {
+  padding-block: clamp(56px, 9vw, 112px);
+  background: var(--olive-soft);
+  color: var(--on-olive-soft);
+}
+.shots a:focus-visible,
+.shots .strip:focus-visible {
+  outline: 3px solid var(--on-olive-soft);
+  outline-offset: 4px;
+}
+.shots-note {
+  margin: 1rem 0 0;
+  font-size: 1.1rem;
+}
+.plat {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: clamp(40px, 6vw, 64px) 0 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.plat .tag {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* A sideways strip of phones. It scrolls with touch, trackpad or keys, no script. */
+.strip {
+  --edge: max(clamp(20px, 5vw, 56px), calc((100% - 1180px) / 2 + clamp(20px, 5vw, 56px)));
+  padding-inline: var(--edge);
+  padding-block: 4px 12px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: thin;
+  scrollbar-color: currentColor transparent;
+}
+.strip ul {
+  display: flex;
+  gap: clamp(16px, 2.4vw, 28px);
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.strip li {
+  flex: none;
+  width: clamp(190px, 22vw, 250px);
+  scroll-snap-align: start;
+}
+.shot {
+  margin: 0;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 11% / 5%;
+  box-shadow: 0 0 0 2px rgba(28, 28, 22, 0.14);
+}
+.shot.droid img {
+  border-radius: 13% / 6%;
+}
+.shot figcaption {
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+.shot .dk {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  .shot img {
+    box-shadow: 0 0 0 2px rgba(230, 226, 217, 0.18);
+  }
+  .shot .lt {
+    display: none;
+  }
+  .shot .dk {
+    display: block;
+  }
+}
+/* The theme switch flips the screens too. */
+@media (prefers-color-scheme: light) {
+  :root:has(#flip:checked) .shot img {
+    box-shadow: 0 0 0 2px rgba(230, 226, 217, 0.18);
+  }
+  :root:has(#flip:checked) .shot .lt {
+    display: none;
+  }
+  :root:has(#flip:checked) .shot .dk {
+    display: block;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root:has(#flip:checked) .shot img {
+    box-shadow: 0 0 0 2px rgba(28, 28, 22, 0.14);
+  }
+  :root:has(#flip:checked) .shot .lt {
+    display: block;
+  }
+  :root:has(#flip:checked) .shot .dk {
+    display: none;
   }
 }
